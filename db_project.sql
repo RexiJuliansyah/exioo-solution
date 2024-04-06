@@ -11,76 +11,39 @@
  Target Server Version : 100422
  File Encoding         : 65001
 
- Date: 06/04/2024 20:53:36
+ Date: 06/04/2024 23:10:00
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for failed_jobs
+-- Table structure for tb_m_brand
 -- ----------------------------
-DROP TABLE IF EXISTS `failed_jobs`;
-CREATE TABLE `failed_jobs`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp(0) NOT NULL DEFAULT current_timestamp(0),
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `failed_jobs_uuid_unique`(`uuid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+DROP TABLE IF EXISTS `tb_m_brand`;
+CREATE TABLE `tb_m_brand`  (
+  `BRAND_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `BRAND_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `CREATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `CREATED_DATE` datetime(0) NULL DEFAULT NULL,
+  `UPDATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `UPDATED_DATE` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`BRAND_ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for migrations
+-- Table structure for tb_m_category
 -- ----------------------------
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE `migrations`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of migrations
--- ----------------------------
-INSERT INTO `migrations` VALUES (1, '2014_10_12_000000_create_users_table', 1);
-INSERT INTO `migrations` VALUES (2, '2014_10_12_100000_create_password_resets_table', 1);
-INSERT INTO `migrations` VALUES (3, '2019_08_19_000000_create_failed_jobs_table', 1);
-INSERT INTO `migrations` VALUES (4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
-
--- ----------------------------
--- Table structure for password_resets
--- ----------------------------
-DROP TABLE IF EXISTS `password_resets`;
-CREATE TABLE `password_resets`  (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  INDEX `password_resets_email_index`(`email`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for personal_access_tokens
--- ----------------------------
-DROP TABLE IF EXISTS `personal_access_tokens`;
-CREATE TABLE `personal_access_tokens`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `last_used_at` timestamp(0) NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `personal_access_tokens_token_unique`(`token`) USING BTREE,
-  INDEX `personal_access_tokens_tokenable_type_tokenable_id_index`(`tokenable_type`, `tokenable_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+DROP TABLE IF EXISTS `tb_m_category`;
+CREATE TABLE `tb_m_category`  (
+  `CATEGORY_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `CATEGORY_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `CREATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `CREATED_DATE` datetime(0) NULL DEFAULT NULL,
+  `UPDATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `UPDATED_DATE` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`CATEGORY_ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for tb_m_menu
@@ -135,6 +98,27 @@ INSERT INTO `tb_m_permission` VALUES ('0e15838b-65ef-4ef8-a6de-165d2afac75b', 'a
 INSERT INTO `tb_m_permission` VALUES ('0e15838b-65ef-4ef8-a6de-165d2afac75b', 'bcee69a2-db5a-4d71-9182-e0babc72015b', '2024-04-06 02:13:38', 'superadmin', '2024-04-06 02:13:38', 'superadmin');
 
 -- ----------------------------
+-- Table structure for tb_m_product
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_m_product`;
+CREATE TABLE `tb_m_product`  (
+  `PRODUCT_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `CATEGORY_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `PRODUCT_CODE` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `PRODUCT_DESC` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `PRODUCT_IMG` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `STOCK` int(5) NULL DEFAULT NULL,
+  `PRICE` int(11) NULL DEFAULT NULL,
+  `BRAND_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `SUPPLIER_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `CREATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `CREATED_DATE` datetime(0) NULL DEFAULT NULL,
+  `UPDATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `UPDATED_DATE` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`PRODUCT_ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for tb_m_role
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_m_role`;
@@ -153,6 +137,20 @@ CREATE TABLE `tb_m_role`  (
 -- Records of tb_m_role
 -- ----------------------------
 INSERT INTO `tb_m_role` VALUES ('0e15838b-65ef-4ef8-a6de-165d2afac75b', 'Super Admin', 'Super Admin', 'admin', '2024-04-06 00:37:12', 'admin', '2024-04-06 00:37:12');
+
+-- ----------------------------
+-- Table structure for tb_m_supplier
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_m_supplier`;
+CREATE TABLE `tb_m_supplier`  (
+  `SUPPLIER_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `SUPPLIER_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `CREATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `CREATED_DATE` datetime(0) NULL DEFAULT NULL,
+  `UPDATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `UPDATED_DATE` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`SUPPLIER_ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for tb_m_system
@@ -195,5 +193,69 @@ CREATE TABLE `tb_m_user`  (
 -- ----------------------------
 INSERT INTO `tb_m_user` VALUES ('600082f6-93d8-475b-a4ca-2a7c5343c225', '0e15838b-65ef-4ef8-a6de-165d2afac75b', 'superadmin', '$2y$10$M84HXiOGSlIgbMrT6LlmWuEozXupcG6gQzA5MAC2cmFSL3wuCgADu', 'Super Admin', 'admin@gmail.com', NULL, NULL, 'admin', '2024-04-06 00:43:50', 'admin', '2024-04-06 00:43:50');
 INSERT INTO `tb_m_user` VALUES ('8d39384c-8c09-4540-b1cf-a41a8b90b632', '0e15838b-65ef-4ef8-a6de-165d2afac75b', 'admin', '$2a$12$xrWvgqa3VvkVR2yv8HL0Cug/kBBHao29nzmap5jmVE8Cq82ymUAhi', 'Administrator', 'admin@gmail.com', NULL, NULL, 'admin', '2024-04-06 00:43:50', 'admin', '2024-04-06 00:43:50');
+
+-- ----------------------------
+-- Table structure for tb_r_purchase_product
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_r_purchase_product`;
+CREATE TABLE `tb_r_purchase_product`  (
+  `PURCHASE_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `PRODUCT_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `SUPLLIER_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `AMOUNT` int(3) NULL DEFAULT NULL,
+  `PRICE` int(11) NULL DEFAULT NULL,
+  `CREATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `CREATED_DATE` datetime(0) NULL DEFAULT NULL,
+  `UPDATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `UPDATED_DATE` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`PURCHASE_ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for tb_r_sale_product
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_r_sale_product`;
+CREATE TABLE `tb_r_sale_product`  (
+  `SALE_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `PRODUCT_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `DATE` datetime(0) NULL DEFAULT NULL,
+  `AMOUNT` int(11) NULL DEFAULT NULL,
+  `CREATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `CREATED_DATE` datetime(0) NULL DEFAULT NULL,
+  `UPDATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `UPDATED_DATE` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`SALE_ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for tb_r_transaction
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_r_transaction`;
+CREATE TABLE `tb_r_transaction`  (
+  `TRANSACTION_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `TRANSACTION_CODE` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `TRANSACTION_DATE` datetime(0) NULL DEFAULT NULL,
+  `TOTAL_PRICE` int(11) NULL DEFAULT NULL,
+  `CREATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `CREATED_DATE` datetime(0) NULL DEFAULT NULL,
+  `UPDATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `UPDATED_DATE` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`TRANSACTION_ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for tb_r_transaction_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_r_transaction_detail`;
+CREATE TABLE `tb_r_transaction_detail`  (
+  `TRANSACTION_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `PRODUCT_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `QTY` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `PRODUCT_QTY` int(11) NULL DEFAULT NULL,
+  `CREATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `CREATED_DATE` datetime(0) NULL DEFAULT NULL,
+  `UPDATED_BY` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `UPDATED_DATE` datetime(0) NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
